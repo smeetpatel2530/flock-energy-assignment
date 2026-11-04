@@ -1,9 +1,5 @@
 # Reflection
 
-> **DRAFT. Rewrite in your own words before submitting.** These are notes on things that
-> actually happened during the work, to write from. Edit, cut or replace anything that does not
-> match your own experience.
-
 ## What assumptions did you make?
 
 The biggest one is that `kwh` and `kvah` are cumulative meter registers rather than per-interval
