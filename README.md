@@ -285,7 +285,7 @@ Caching would add invalidation questions for no demonstrated need.
 rate-limits, so concurrency would only trigger 429s sooner. A sync client is simpler, and FastAPI
 runs sync endpoints in a thread pool.
 
-**Retry policy kept narrow:** one re-login on 401 (portal sessions last one hour), exponential backoff on 429
+**Retry policy kept narrow:** one re-login on 401 (The observed session cookie has a 3600-second Max-Age; natural session expiry and renewal behaviour have not been verified), exponential backoff on 429
 (there is no `Retry-After`), one secret refetch on a rejected export signature. No retries on
 timeouts or 5xx, to avoid amplifying load on a struggling portal.
 
