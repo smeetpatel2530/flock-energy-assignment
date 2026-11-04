@@ -23,11 +23,7 @@ signature produced by the portal's own code.
 
 ## If you had another day, what would you improve?
 
-Resolve what the hierarchy really is (codes reused under different parents: per-parent
-numbering or genuinely inconsistent links?) and expose a network tree with explicit data-quality
-flags. Measure the real rate limit and session lifetime instead of designing around guesses.
-Confirm the half-hourly vs daily readings split across all 403 meters, since that rests on a
-sample. Move the snapshot refresh to a background task.
+I would first investigate the inconsistent network hierarchy, particularly why certain codes appear under multiple parents, and verify whether this reflects legitimate per-parent numbering or incorrect source data. I would also test the service over a longer session to understand authentication expiry and measure the portal's actual rate limits instead of relying on conservative assumptions. Beyond that, I would verify the consumption-data granularity across all 403 meters and move the bulk-export refresh into a background task so API requests do not have to wait for the snapshot to refresh.
 
 ## What mistake did you make while solving this?
 
