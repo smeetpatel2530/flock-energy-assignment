@@ -75,8 +75,8 @@ openapi.json    generated API spec
 Requires Python 3.11+.
 
 ```bash
-git clone <this repo>
-cd <repo>
+git clone https://github.com/smeetpatel2530/flock-energy-assignment.git
+cd flock-energy-assignment
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements-dev.txt
