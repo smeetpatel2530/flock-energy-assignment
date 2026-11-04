@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     password: SecretStr
 
     timeout_seconds: float = 15.0
-    # The portal rate-limits bursts (HTTP 429, no Retry-After); ~1 req/1.5s was safe in testing.
+    # Throttle requests to reduce portal rate limiting.
     min_request_interval_seconds: float = 0.5
     max_rate_limit_retries: int = 3
     # How long the bulk meter snapshot is reused before re-exporting from the portal.
