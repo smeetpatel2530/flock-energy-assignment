@@ -72,22 +72,60 @@ openapi.json    generated API spec
 
 ## Setup
 
-Requires Python 3.11+.
+Requires Python 3.11+ and Git. Clone the repository first:
 
 ```bash
 git clone https://github.com/smeetpatel2530/flock-energy-assignment.git
 cd flock-energy-assignment
+```
+
+### macOS / Linux
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements-dev.txt
+python -m pip install -r requirements-dev.txt
 ```
+
+### Windows (Command Prompt)
+
+```bat
+py -3 -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install -r requirements-dev.txt
+```
+
+### Windows (PowerShell)
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements-dev.txt
+```
+
+Use the commands for your own operating system and terminal. `py -3` selects an installed
+Windows Python 3 version; use Python 3.11 or newer.
 
 ## Configuration
 
-Copy the template and fill in the portal login you were given:
+Copy `.env.example` to `.env` and fill in the portal login you were given:
+
+**macOS / Linux:**
 
 ```bash
 cp .env.example .env
+```
+
+**Windows Command Prompt:**
+
+```bat
+copy .env.example .env
+```
+
+**Windows PowerShell:**
+
+```powershell
+Copy-Item .env.example .env
 ```
 
 | Variable | Required | Default | Meaning |
@@ -108,7 +146,7 @@ by the API or written to logs.
 ## Running
 
 ```bash
-uvicorn app.main:app --port 8000
+python -m uvicorn app.main:app --port 8000
 ```
 
 The first meter request takes a couple of seconds (login + bulk export, about 1.6 s when tested);
@@ -220,7 +258,7 @@ Errors share one shape: `{"error": "<code>", "message": "<text>"}`.
 ## Tests
 
 ```bash
-pytest
+python -m pytest -q
 ```
 
 48 tests, all offline (the portal is faked with `httpx.MockTransport` or a stub client):
