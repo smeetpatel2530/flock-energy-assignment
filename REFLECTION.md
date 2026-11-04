@@ -43,11 +43,4 @@ trusting my own error messages.
 
 ## If you were reviewing your own submission, what would you criticise?
 
-The hierarchy is passed through rather than modelled, so the "where does this meter sit"
-question is only half-answered for messy records. Several conclusions rest on samples
-(export-vs-detail agreement, the granularity split). The in-memory snapshot is a single-process
-design: two instances would each hold their own copy and each hit the portal. Session expiry
-handling is tested against a fake portal but has not been observed live. Finally, the export's
-signing secret is fetched from the portal on every refresh; that mirrors the portal's own UI,
-but if the portal team considered the export privileged this design would depend on something
-they might change.
+The network hierarchy is reconstructed from individual meter records rather than an authoritative hierarchy source. Although the API exposes a tree and reports inconsistencies, it cannot determine whether reused codes represent valid parent-scoped identifiers or incorrect relationships. Several other conclusions, including the agreement between export and detail records and the consumption granularity split, are based on samples rather than the complete dataset. The in-memory cache also works only within a single process, and session expiry recovery has not been tested against a naturally expired live session. Finally, the implementation depends on the portal's signed export mechanism, which could change without notice.
